@@ -7,12 +7,13 @@ import {
   TextField
 } from "@material-ui/core";
 
+const EXPENSE_TYPES = [
+  { name: "Travel", id: "travel", val: 0 },
+  { name: "Food", id: "food", val: 0 },
+  { name: "Clothes", id: "clothes", val: 0 }
+];
+
 const App = () => {
-  const EXPENSE_TYPES = [
-    { name: "Travel", id: "travel", val: 0 },
-    { name: "Food", id: "food", val: 0 },
-    { name: "Clothes", id: "clothes", val: 0 }
-  ];
   const [expenseType, setExpenseType] = React.useState(EXPENSE_TYPES[0]);
 
   const setSelectType = (e: any) => {
@@ -30,9 +31,9 @@ const App = () => {
   };
 
   return (
-    <>
+    <div>
       <FormControl variant="outlined">
-        <Select value={expenseType.name} onChange={e => setSelectType(e)}>
+        <Select value={expenseType.id} onChange={e => setSelectType(e)}>
           <MenuItem value="" disabled>
             Select Type
           </MenuItem>
@@ -52,7 +53,7 @@ const App = () => {
         type="number"
         onChange={e => amountChange(e)}
       />
-    </>
+    </div>
   );
 };
 
